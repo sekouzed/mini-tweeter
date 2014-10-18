@@ -25,6 +25,11 @@ if (RequestHelper::getMethod() == 'POST') {
     }
 
     if (count($errors) == 0) {
+        $tweets_manager = new TweetsManager();
+        $tweets_manager->store([
+            'username' => $input->getInput('username'),
+            'message' => $input->getInput('message')
+        ]);
         RequestHelper::redirectUser('index.php');
     }
 }
